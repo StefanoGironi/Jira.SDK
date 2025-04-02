@@ -45,6 +45,7 @@ namespace Jira.SDK
             ProjectRole,
             ProjectCategories,
             ProjectTypes,
+            MyFilters,
         }
 
         private RestClient Client { get; set; }
@@ -66,6 +67,7 @@ namespace Jira.SDK
             {JiraObjectEnum.User, String.Format("{0}/user/", JiraAPIServiceURI)},
             {JiraObjectEnum.Group, String.Format("{0}/group", JiraAPIServiceURI) },
             {JiraObjectEnum.Filters, String.Format("{0}/filter/favourite", JiraAPIServiceURI)},
+            {JiraObjectEnum.MyFilters, String.Format("{0}/filter/my", JiraAPIServiceURI)},
             {JiraObjectEnum.AgileBoards, String.Format("{0}/rapidviews/list/", JiraAgileServiceURI)},
             {JiraObjectEnum.Sprints, String.Format("{0}/sprintquery/{{boardID}}/", JiraAgileServiceURI)},
             {JiraObjectEnum.BacklogSprints, String.Format("{0}/xboard/plan/backlog/data.json", JiraAgileServiceURI)},
@@ -327,6 +329,11 @@ namespace Jira.SDK
         public List<IssueFilter> GetFavoriteFilters()
         {
             return GetList<IssueFilter>(JiraObjectEnum.Filters);
+        }
+
+        public List<IssueFilter> GetMyFilters()
+        {
+            return GetList<IssueFilter>(JiraObjectEnum.MyFilters);
         }
 
         public List<Issue> GetIssuesWithEpicLink(String epicLink)
