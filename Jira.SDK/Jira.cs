@@ -169,6 +169,17 @@ namespace Jira.SDK
 			return filter;
 		}
 
+        public IssueFilter GetMyFilter(String filtername)
+        {
+            IssueFilter filter = GetMyFilters().Where(f => f.Name.Equals(filtername)).FirstOrDefault();
+            if (filter == null)
+            {
+                throw new Exception(String.Format("The filter with name {0} does not exist", filtername));
+            }
+
+            return filter;
+        }
+
         public List<IssueSecurityScheme> GetIssueSecuritySchemes()
         {
             var schemes = _client.GetIssueSecuritySchemes();
