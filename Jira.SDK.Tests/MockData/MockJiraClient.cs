@@ -1455,13 +1455,18 @@ namespace Jira.SDK.Tests
             return new List<Issue>();
         }
 
-		public List<IssueFilter> GetFavoriteFilters()
-		{
+        public List<IssueFilter> GetFavoriteFilters()
+        {
             return new List<IssueFilter>();
-		}
+        }
+
+        public List<IssueFilter> GetMyFilters()
+        {
+            return new List<IssueFilter>();
+        }
 
 
-		public void AddIssue(Issue issue)
+        public void AddIssue(Issue issue)
 		{
 			//
 		}

@@ -151,7 +151,14 @@ namespace Jira.SDK
             return filters;
         }
 
-		public IssueFilter GetFilter(String filtername)
+        public List<IssueFilter> GetMyFilters()
+        {
+            List<IssueFilter> filters = _client.GetMyFilters();
+            filters.ForEach(filter => filter.SetJira(this));
+            return filters;
+        }
+
+        public IssueFilter GetFilter(String filtername)
 		{
 			IssueFilter filter = GetFilters().Where(f => f.Name.Equals(filtername)).FirstOrDefault();
 			if (filter == null)

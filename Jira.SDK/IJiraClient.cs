@@ -58,6 +58,7 @@ namespace Jira.SDK
 		List<Issue> GetIssuesWithEpicLink(String epicLink);
 
         List<IssueFilter> GetFavoriteFilters();
+        List<IssueFilter> GetMyFilters();
 
         List<IssueSecurityScheme> GetIssueSecuritySchemes();
 
