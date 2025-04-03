@@ -648,14 +648,15 @@ namespace Jira.SDK.Domain
             Parent = null;
             if (fields.ContainsKey("parent") && fields["parent"] != null)
             {
-                //Parent = new Issue();
+                Dictionary<String, Object> parent = (fields["parent"] as JObject).ToObject<Dictionary<String, Object>>();
+                Parent = new ParentIssue();
+                Parent.Key = (String)parent["key"];
             }
 
             Subtasks = null;
             if (fields.ContainsKey("subtasks"))
             {
-                JArray subtasks = (JArray)fields["subtasks"];
-
+                //JArray subtasks = (JArray)fields["subtasks"];
                 //Subtasks = null;
             }
 
